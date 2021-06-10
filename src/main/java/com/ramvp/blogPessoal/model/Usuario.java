@@ -2,6 +2,7 @@ package com.ramvp.blogPessoal.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -11,6 +12,16 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    //Construtor para testes
+    public Usuario() {
+
+    }
+
+    public Usuario(@NotNull String usuario, @NotNull String senha) {
+        this.usuario = usuario;
+        this.senha = senha;
+    }
 
     @NotBlank
     @Size(min = 3, max = 30)
