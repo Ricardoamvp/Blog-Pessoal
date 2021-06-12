@@ -1,5 +1,6 @@
 package com.ramvp.blogPessoal.services;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class PostagemServices {
 		if (postagemExistente.isPresent()) {
 			return Optional.empty();
 		} else {
+			novaPostagem.setDataPostagem(LocalDateTime.now());
 			return Optional.ofNullable(repository.save(novaPostagem));
 		}
 	}
